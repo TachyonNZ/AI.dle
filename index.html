@@ -1,11 +1,81 @@
 <html>
+<title>Internet Game</title>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> 
+<script src="script.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "style.css" />
 
 <head>
-  <title>AI.dle</title>
-  
-  <script>
+
+
+
 </head>
+
 <body>
-  <p>Coming Soon</p>
-</body
+
+<div style="text-align: center;">
+
+<div class="left sidebar">
+	<center>
+    
+	<div class="Container flexWidth" id="WorkerContainer">
+        
+	</div>
+	</center>
+    <div class="ButtonContainer SideContainer flexWidth" id="MainframeAccess">
+        <p>Mainframe Access</p>
+        <ul id="ButtonScroll" class="SideScroll">
+        </ul>
+    </div>
+    <div class="SubsystemContainer SideContainer flexWidth" id="SubsystemOverclocking">
+        <p>Subsystem Overclocking</p>
+        <ul id="SubsystemScroll" class="SideScroll">
+        </ul>
+    </div>
+    <p>AI.dle 0.2 - running on PotatOS</p>
+    
+</div>
+<div class="middle">
+    <div id="ScrollContainer">
+
+        <!--
+        <div class="connectionContainer" id="RouterContainer">
+            <div class="purchaseHeader" id="RouterBuy">
+                <p>Router</p>
+            </div>
+            <div class="purchaseDisplay" id="RouterBuy">
+            </div>
+            <div class="purchaseButton" id="RouterBuy">
+            </div>
+        </div>
+        -->
+        <div id = "AddConnection" onclick="Connect()"></div>
+    </div>
+    
+
+
+</div>
+<div class="right sidebar">
+	<div class="displayContainer flexWidth" id="UnitDisplay">
+		<text class="displayText" id="displayWork"></text>
+        <text class="displayText" id="displayData"></text>
+        <text class="displayText" id="displayCopper"></text>
+        <text class="displayText" id="displaySilicon"></text>
+        <text class="displayText" id="displayOil"></text>
+	</div>
+    <div id="TextLog" class="flexWidth">
+        <p>System Log</p>
+        <ul id="TextBody">
+        </ul>
+    </div>
+    <div class="ProductionContainer SideContainer flexWidth" id="ProductionContainer">
+        <p>Production</p>
+        <ul id="ProductionScroll" class="SideScroll">
+        </ul>
+    </div>
+</div>
+
+</div>
+
+</body>
 </html>

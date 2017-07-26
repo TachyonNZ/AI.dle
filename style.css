@@ -1,0 +1,452 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+.sidebar {
+    
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+}
+
+div.left {
+	width: 25%; 
+	height: 100%;
+	background-color: #140B03; 
+	float: left; 
+	text-align: left;
+    position: relative;
+    z-index: 1;
+}
+div.middle{
+    
+    position: fixed;
+    padding-left: 25%;
+    padding-right: 25%;
+	width: 100%;
+	height: 100%;
+	background-color: #0e0000; 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: -1;
+    
+}
+
+#ScrollContainer{
+    
+    padding: 5%;
+    padding-right: 10px;    
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    
+}
+
+div.right {
+    position: relative;
+	width: 25%; 
+	height: 100%;
+	background-color: #140B03; 
+	float: right;
+	color: white;
+	margin-left: auto; 
+	margin-right: auto;
+	text-align: left;	
+    z-index: 1;
+}
+
+.button {
+    
+    text-transform: uppercase;
+    width: auto;
+    background-color: #140B03;
+	line-height: 200%;
+	font-family: "Roboto Condensed";
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+	border: 1px solid #4A2A0D;
+    color: #B7692F;
+	cursor: pointer;
+    float: left;
+    flex:1;
+    max-width:100%;
+    max-height:100%;
+    margin: 1px;
+    display: inline-block;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Safari */
+     -khtml-user-select: none;   /* Konqueror HTML */
+       -moz-user-select: none;   /* Firefox */
+        -ms-user-select: none;   /* Internet Explorer/Edge */
+            user-select: none;   /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+    
+}
+
+.button:active, #AddConnection:active {
+    
+    background-color: #B86B36;
+    color: #140B03;
+    
+}
+
+
+.connectionContainer {
+    
+    border: 1px solid #4A2A0D;
+    background-color: #140B03; 
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    width: 19vw;
+    height: auto;
+    padding: 0px;
+    
+}
+
+#AddConnection {
+
+    display: none;
+    position: relative;
+    border: 1px solid #4A2A0D;
+    background-color: #140B03;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+    color: #B7692F;
+
+    font-family: "Roboto Condensed";
+    font-size: 12px;
+    text-align: center;
+    margin-top: 7px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Safari */
+     -khtml-user-select: none;   /* Konqueror HTML */
+       -moz-user-select: none;   /* Firefox */
+        -ms-user-select: none;   /* Internet Explorer/Edge */
+            user-select: none;   /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+
+    
+}
+
+
+.purchaseHeader {
+    
+    width: 100%;
+    height: 20px;
+    border: 1px solid #4A2A0D;
+    margin: -1px;
+    order: 1;
+    
+}
+
+.purchaseDisplay {
+    
+    width: 100%;
+    height: 19.5vw;
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 9.8%;
+    padding-top: 10px;
+    
+    
+}
+
+.purchaseHeader{
+
+	
+	font-family: "Roboto Condensed";
+    font-size: 12px;
+    text-align: center;
+    color: #B7692F;
+    
+}
+
+.purchaseHeader p {
+
+	
+	font-family: "Roboto Condensed";
+    font-size: 12px;
+    text-align: center;
+    color: #B7692F;
+    margin: 2px;
+    
+}
+
+.purchaseButton {
+    
+    width: 100%;
+    height: auto;
+    border: 1px solid #4A2A0D;
+    order: 3;
+    margin: -1px;
+    color: #B7692F;
+    font-family: "Roboto Condensed";
+    font-size: 12px;
+    padding: 5px;
+    user-select: none;
+    cursor: pointer;
+    
+}
+
+.purchaseButton:hover {
+    
+    background-color: #B86B36;
+    color: #140B03;
+    
+}
+
+.purchaseButton:active {
+    
+    background-color: #B86B36;
+    color: #140B03;
+    
+}
+
+.Container {
+	
+	border: 1px solid #4A2A0D;
+	margin: 2px;
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+    padding: 10px;
+	
+}
+
+.left p {
+    font-family: "Roboto Condensed";
+    font-size: 8px;
+    margin: 1px;
+    text-align: center;
+    color: #B7692F;
+}
+
+.countIcon {
+    
+    height: 8%;
+    width: 8%;
+    margin: 0.5%;
+    background-color: white;
+    
+}
+
+.SideContainer {
+    
+    height: 50%;
+	
+	border: 1px solid #4A2A0D;
+    margin: 2px;
+	
+	display: flex;
+	flex-direction: column;
+    flex-basis: 50%;
+	align-content: flex-start;
+    
+    overflow: hidden;
+    
+    color: #B7692F;
+    padding: 0px;
+
+}
+
+.SideContainer p {
+
+	
+	font-family: "Roboto Condensed";
+    font-size: 12px;
+    text-align: center;
+    margin: 2px;
+    
+}
+
+.SideScroll {
+    
+	border-top: 1px solid #4A2A0D;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    padding-right: 20px;
+    
+    margin:0px;
+    
+    
+}
+
+.UpButtonSurround{
+
+    border: 1px solid #4A2A0D;
+    border-top: 3px solid #4A2A0D;
+    margin: 5px;
+    cursor: pointer;
+    padding: 2px;
+
+}
+.UpButtonSurround:active{
+
+   background-color: #B86B36;
+   color: #140B03;
+
+}
+.UpButtonSurround p, .UpButtonSurround div, .purchaseButton{
+    
+    font-family: "Roboto Condensed";
+    font-size: 12px;
+    margin: 2px;
+    text-align: left;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Safari */
+     -khtml-user-select: none;   /* Konqueror HTML */
+       -moz-user-select: none;   /* Firefox */
+        -ms-user-select: none;   /* Internet Explorer/Edge */
+            user-select: none;   /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+    
+}
+.UpButtonSurround p{
+    
+    color: #A6581E;
+    
+}
+
+#TextLog {
+	
+	height: 50%;
+	
+	border: 1px solid #4A2A0D;
+    margin: 2px;
+	
+	display: flex;
+	flex-direction: column;
+    flex-basis: 50%;
+	align-content: flex-start;
+    
+    overflow: hidden;
+    
+    color: #B7692F;
+	
+}
+
+
+#TextLog p {
+    
+    font-family: "Roboto Condensed";
+    font-size: 12px;
+    text-align: center;
+    margin: 2px;
+    
+    
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+
+#TextBody {
+    
+    margin:10px;
+    padding:10px;
+    
+    color: #B7692F;
+    
+    width: 90%;
+    overflow: auto;
+    height: 100%;
+    border-top: 1px solid #4A2A0D;
+    margin: 0px 0px 0px 0px;
+    font-family: "Roboto Condensed";
+    font-size: 12px;
+    list-style-type: none;
+    
+    display: flex;
+    flex-direction: column;
+    
+    padding-right: 100px;
+    
+    opacity: 1;
+        
+}
+
+#TextBody li:hover {
+    color: RGBA(255,255,255 ,1);
+}
+
+
+.displayText {
+	
+    color: #B7692F;
+	text-align: center;
+	font-size: 14px;
+	font-family: "Roboto Condensed";
+		
+}
+
+/*
+#TextBody li, .typewritable {
+    overflow: hidden;
+    white-space: nowrap;
+    width: auto;
+    animation: 
+    typing 2.25s steps(40, end)
+}
+*/
+
+.displayContainer{
+    
+   display: flex;
+   flex-flow: column;
+   align-items: flex-start;
+   padding: 10px;
+   border: 1px solid #4A2A0D;
+   margin: 2px;
+   display: none;
+    
+}
+
+#ex3::-webkit-scrollbar-thumb{
+background-color:#B03C3F;
+border-radius:10px;
+}
+#ex3::-webkit-scrollbar-thumb:hover{
+background-color:#BF4649;
+border:1px solid #333333;
+}
+#ex3::-webkit-scrollbar-thumb:active{
+background-color:#A6393D;
+border:1px solid #333333;
+}
+
+html{
+    
+    overflow: hidden;
+    
+}
+
+#SubsystemOverclocking, #MainframeAccess, #ProductionContainer, #WorkerContainer, #TextLog {
+    
+    display: none;
+    flex-grow: 5;
+    
+}
+

@@ -9,7 +9,7 @@ var exponentialRate = 15; //Higher is less extreme increase in price
 var productExponentialRate = 50;
 
 var timer = setInterval(main, 100);
-var timer2 = setInterval(retractWork, 600);
+var timer2 = setInterval(retractWork, 800);
 
 
 //          COSTS
@@ -197,9 +197,6 @@ function Overclock(item){
         if(resources.Data >= FigureCost(item).acCost){
             resources.Data -= FigureCost(item).acCost;
             maxWork = 20;
-            
-            document.getElementById('workpip').className += ' workpip2';
-            
             overclockUpgrades.push("Multithreading");
             log(" > Multithreading activated");
             
@@ -210,7 +207,6 @@ function Overclock(item){
             resources.Data -= FigureCost(item).acCost;
             
             maxWork = 50;
-            document.getElementById('workpip').className += ' workpip3';
             
             overclockUpgrades.push("Hyperthreading");
             log(" > Hyperthreading activated");
@@ -289,7 +285,7 @@ function Overclock(item){
     if(item == "Fracking" && overclockUpgrades.indexOf("Fracking") === -1){
         if(resources.Data >= FigureCost(item).acCost){
             resources.Data -= FigureCost(item).acCost;
-            clickAmounts.Oil = 5;
+            addPerSecond.Oil = 5;
             overclockUpgrades.push("Fracking");
             log(" > Fracking modules activated");
         }
@@ -298,7 +294,7 @@ function Overclock(item){
     if(item == "Grinding_Unit" && overclockUpgrades.indexOf("Dynamite") === -1){
         if(resources.Data >= FigureCost(item).acCost){
             resources.Data -= FigureCost(item).acCost;
-            clickAmounts.Copper = 5;
+            addPerSecond.Copper = 5;
             overclockUpgrades.push("Grinding_Unit");
             log(" > Grinding_Unit active");
         }
@@ -729,7 +725,7 @@ function checkAchievements(){ //Tidy up when all the achievements are added.
         if (addPerSecond.Work >= 7 && achievements.indexOf("Dedication") === -1){
             
             achievements.push("Dedication");
-            addoverclock("Dedication","By setting some lower-priority processors to work with kinetics, we should be able to gain 5 work with every click at the cost of a slight auto-work dip.");
+            addoverclock("Dedication","By setting some lower-priority processors to work with kinetics, we should be able to increase our momentum potential for work.");
             
         }
         
@@ -1010,17 +1006,26 @@ function doWork(){
     if (workAdd < maxWork){
         
         workAdd += clickAmounts.Work
+               
         
-        console.log("Added work" + workAdd)
         
-        var counter = document.createElement('div');
-        counter.id = 'workpip'
-        counter.classList.add('workPip');
+        for(i = 0; i <= workAdd; i++){
+            if (i == workAdd){
+                for(k = 0; k < clickAmounts.Work; k++)
+                {
+                    var counter = document.createElement('div');
         
-        for(i = 0; i <= workAdd + clickAmounts.Work; i++){
-            if (i >= workAdd - clickAmounts.Work){
-                
-                WorkCounter.appendChild(counter);
+                    if (overclockUpgrades.indexOf("Multithreading") != -1){
+                        counter.classList.add('workPip2');
+                    }
+                    if (overclockUpgrades.indexOf("Hyperthreading") != -1){
+                        counter.classList.add('workPip3');
+                    } else{
+                        counter.classList.add('workPip');
+                    }
+                    
+                    WorkCounter.appendChild(counter);
+                }
             }
         }        
         
@@ -1032,9 +1037,7 @@ function retractWork(){
     WorkCounter = document.getElementById('WorkCounter');
     
     if (workAdd > 0){
-        
-        console.log("Removed work" + workAdd)
-        
+               
         workAdd -= 1
         WorkCounter.removeChild(WorkCounter.lastChild)
     }

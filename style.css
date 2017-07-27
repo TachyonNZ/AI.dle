@@ -263,21 +263,29 @@ div.right {
     
     z-index: 20;
     height: 100%;
-    width: 9%;
+    
     margin: 0.5%;
     background-color: #B7692F;
-    
+    width: 9%;
 }
 
 .workPip2 {
+    z-index: 20;
+    height: 100%;
     
+    margin: 0.5%;
+    background-color: #B7692F;
     width: 4%;
     
 }
 
 .workPip3 {
+    z-index: 20;
+    height: 100%;
     
-    width: 1.6%;
+    margin: 0.5%;
+    background-color: #B7692F;
+    width: 0.8%;
     
 }
 

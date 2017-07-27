@@ -123,11 +123,11 @@ div.right {
     height: 30px;
     cursor: pointer;
     color: #B7692F;
+    margin-bottom: 2px;
 
     font-family: "Roboto Condensed";
     font-size: 12px;
     text-align: center;
-    margin-top: 7px;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none;   /* Safari */
      -khtml-user-select: none;   /* Konqueror HTML */
@@ -230,6 +230,18 @@ div.right {
 	
 }
 
+.LevelContainer {
+	
+	border: 1px solid #4A2A0D;
+	margin: 2px;
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2px;
+    height: 10px;
+	
+}
+
 .left p {
     font-family: "Roboto Condensed";
     font-size: 8px;
@@ -244,6 +256,28 @@ div.right {
     width: 8%;
     margin: 0.5%;
     background-color: white;
+    
+}
+
+.workPip {
+    
+    z-index: 20;
+    height: 100%;
+    width: 9%;
+    margin: 0.5%;
+    background-color: #B7692F;
+    
+}
+
+.workPip2 {
+    
+    width: 4%;
+    
+}
+
+.workPip3 {
+    
+    width: 1.6%;
     
 }
 

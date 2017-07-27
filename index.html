@@ -21,6 +21,9 @@
 	<div class="Container flexWidth" id="WorkerContainer">
         
 	</div>
+    <div class="LevelContainer flexWidth" id="WorkCounter">
+        
+	</div>
 	</center>
     <div class="ButtonContainer SideContainer flexWidth" id="MainframeAccess">
         <p>Mainframe Access</p>
@@ -49,11 +52,17 @@
             </div>
         </div>
         -->
-        <div id = "AddConnection" onclick="Connect()"></div>
+        <div id = "ViewToggler">
+            <div class = "swaptab" id = "SwapViewTree" onclick="SwapView(Tree)"></div>
+            <div class = "swaptab" id = "SwapViewBlocks" onclick="SwapView(Blocks)"></div>
+            <div class = "swaptab" id = "SwapViewResearch" onclick="SwapView(Research)"></div>
+            <div class = "swaptab" id = "SwapViewTemplates" onclick="SwapView(Templates)"></div>
+        </div>
+        <div id = "BaseActions">
+            <div id = "AddConnection" onclick="Connect()"></div>
+            <div id = "Research" onclick="Connect()"></div>
+        </div>
     </div>
-    
-
-
 </div>
 <div class="right sidebar">
 	<div class="displayContainer flexWidth" id="UnitDisplay">

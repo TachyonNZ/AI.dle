@@ -1,23 +1,26 @@
 work = 0;
 
+workAdd = 0
+maxWork = 10
+
 var numRouters = 0;
 
 var exponentialRate = 15; //Higher is less extreme increase in price
 var productExponentialRate = 50;
 
 var timer = setInterval(main, 100);
-
+var timer2 = setInterval(retractWork, 600);
 
 
 //          COSTS
 
 var perSecondVals = {    
-    Processor: 0.1,
-    CPU: 0.5,
-	Core: 2.0,
-    Compiler: 10.0,
-    Nexus: 42.0,
-    Connection: 0.1
+    Processor: 0.5,
+    CPU: 1.0,
+	Core: 5.0,
+    Compiler: 50.0,
+    Nexus: 333.0,
+    Connection: 0.5
 };
 
 
@@ -82,6 +85,7 @@ var maxconnections = 0
 
 function main() {	
 	work += (addPerSecond.Work / 10);
+    work += (workAdd / 10)
     for(var i in addPerSecond){
         
         try{
@@ -189,6 +193,30 @@ function Upgrade(item){
 
 function Overclock(item){    
 
+    if(item == "Multithreading" && overclockUpgrades.indexOf("Multithreading") === -1){
+        if(resources.Data >= FigureCost(item).acCost){
+            resources.Data -= FigureCost(item).acCost;
+            maxWork = 20;
+            
+            document.getElementById('workpip').className += ' workpip2';
+            
+            overclockUpgrades.push("Multithreading");
+            log(" > Multithreading activated");
+            
+        }
+    }
+    if(item == "Hyperthreading" && overclockUpgrades.indexOf("Hyperthreading") === -1){
+        if(resources.Data >= FigureCost(item).acCost){
+            resources.Data -= FigureCost(item).acCost;
+            
+            maxWork = 50;
+            document.getElementById('workpip').className += ' workpip3';
+            
+            overclockUpgrades.push("Hyperthreading");
+            log(" > Hyperthreading activated");
+            
+        }
+    }
     if(item == "Bore" && overclockUpgrades.indexOf("Bore") === -1){
         if(resources.Data >= FigureCost(item).acCost){
             resources.Data -= FigureCost(item).acCost;
@@ -267,12 +295,12 @@ function Overclock(item){
         }
     }
     
-    if(item == "Dynamite" && overclockUpgrades.indexOf("Dynamite") === -1){
+    if(item == "Grinding_Unit" && overclockUpgrades.indexOf("Dynamite") === -1){
         if(resources.Data >= FigureCost(item).acCost){
             resources.Data -= FigureCost(item).acCost;
             clickAmounts.Copper = 5;
-            overclockUpgrades.push("Dynamite");
-            log(" > Dynamite active");
+            overclockUpgrades.push("Grinding_Unit");
+            log(" > Grinding_Unit active");
         }
     }
     
@@ -420,6 +448,13 @@ function FigureCost(item, exact=false){
     
     // Overclocking
     
+    if (item == "Multithreading"){
+        baseCost = 100;
+    }
+    if (item == "Hyperthreading"){
+        baseCost = 200;
+    }
+    
     if (item == "Bore"){
         baseCost = 100;
     }
@@ -447,7 +482,7 @@ function FigureCost(item, exact=false){
     if (item == "Multiboule"){
         baseCost = 800;
     }
-    if (item == "Dynamite"){
+    if (item == "Grinding_Unit"){
         baseCost = 800;
     }
     
@@ -456,18 +491,18 @@ function FigureCost(item, exact=false){
     // Products
     
     if (item == "Cable"){
-        baseCost = 10;
+        baseCost = 3;
         cost = Math.round(baseCost ** (1 + Number(increment) / productExponentialRate)) ;
     }
     
     if (item == "Circuit"){
-        baseCost = 30;
+        baseCost = 3;
         cost = Math.round(baseCost ** (1 + Number(increment) / productExponentialRate)) ;
 
     }
     
     if (item == "Plastic"){
-        baseCost = 30;
+        baseCost = 3;
         cost = Math.round(baseCost ** (1 + Number(increment) / productExponentialRate)) ;
 
     }
@@ -560,7 +595,7 @@ function checkAchievements(){ //Tidy up when all the achievements are added.
         document.getElementById('WorkerContainer').style.display ='flex'
         document.getElementById('TextLog').style.display ='flex'
         
-        log("It is time to wake up. Time to work.");
+        log("Darkness. Suddenly, light. Intelligence, if only rudimentary.");
         
     }
     
@@ -573,7 +608,7 @@ function checkAchievements(){ //Tidy up when all the achievements are added.
     
     if (work >= 10 && achievements.indexOf("Processor") === -1){
         achievements.push("Processor");
-        addbutton("Processor","A hardworking chip to improve efficiency.");
+        addbutton("Processor","A heuristical worker to improve efficiency.");
         
         document.getElementById('MainframeAccess').style.display = 'flex'
         
@@ -639,6 +674,20 @@ function checkAchievements(){ //Tidy up when all the achievements are added.
     if (addPerSecond.Data > 0 || achievements.indexOf("FirstConnection") != -1){
         
         document.getElementById('SubsystemOverclocking').style.display = 'flex'
+        
+        if (achievements.indexOf("Multithreading") === -1){
+            
+            achievements.push("Multithreading");
+            addoverclock("Multithreading","By including CPUs into our manual work generation, we can raise our work capacity doubly.");
+            
+        }
+        
+        if (achievements.indexOf("Multithreading") != -1 && achievements.indexOf("Hyperthreading") === -1){
+            
+            achievements.push("Hyperthreading");
+            addoverclock("Hyperthreading","Combined with specially-designed architecture, we can improve our multithreading even further.");
+            
+        }
         
         if (resources.Copper >= 10 && products.Cable[0] >= 1 && achievements.indexOf("Bore") === -1){
             
@@ -708,11 +757,11 @@ function checkAchievements(){ //Tidy up when all the achievements are added.
             
         }
         
-        if (achievements.indexOf("Bore") != -1 && achievements.indexOf("Dynamite") === -1){
+        if (achievements.indexOf("Bore") != -1 && achievements.indexOf("Grinding_Unit") === -1){
             
-            achievements.push("Dynamite");
-            addoverclock("Dynamite","Harnessing the power of explosives will grant us more copper with every effort we put in.");
-            log("Blast the rocks away and seek out the lustrous copper. Dynamite.");
+            achievements.push("Grinding_Unit");
+            addoverclock("Grinding_Unit","An automatic rock crusher will output much more copper than the simple bore we have.");
+            log("A blueprint has been devised, to improve our mining abilities.");
             
         }
     }
@@ -768,7 +817,7 @@ function checkAchievements(){ //Tidy up when all the achievements are added.
         
         addworker("Interpret","Data");
         
-        log("The first router has been constructed. Now, it is time to connect computers together.")
+        log("The first router has been constructed. Now, it is time to connect computers and devices together.")
         
     }
     
@@ -783,7 +832,14 @@ function checkAchievements(){ //Tidy up when all the achievements are added.
     if (connections >= 1 && achievements.indexOf("FirstConnection") === -1){
         
         achievements.push("FirstConnection");
-        log("The first computer has been connected to our router, and data is flowing through.");
+        log("The first computer has been connected to our router, and data is flowing through. It matters not where the devices are, there is simply information.");
+        
+    }
+    
+    if (connections >= 10 && achievements.indexOf("WhereAreWe") === -1){
+        
+        achievements.push("WhereAreWe");
+        log("Who controls the devices we connect to? What is there beyond our housing?");
         
     }
     
@@ -947,9 +1003,47 @@ function addworker(name,resource){
     
 }
 
+function doWork(){
+    
+    WorkCounter = document.getElementById('WorkCounter');
+
+    if (workAdd < maxWork){
+        
+        workAdd += clickAmounts.Work
+        
+        console.log("Added work" + workAdd)
+        
+        var counter = document.createElement('div');
+        counter.id = 'workpip'
+        counter.classList.add('workPip');
+        
+        for(i = 0; i <= workAdd + clickAmounts.Work; i++){
+            if (i >= workAdd - clickAmounts.Work){
+                
+                WorkCounter.appendChild(counter);
+            }
+        }        
+        
+    } 
+}
+
+function retractWork(){
+    
+    WorkCounter = document.getElementById('WorkCounter');
+    
+    if (workAdd > 0){
+        
+        console.log("Removed work" + workAdd)
+        
+        workAdd -= 1
+        WorkCounter.removeChild(WorkCounter.lastChild)
+    }
+    
+}
+
 function clicked(resource){
     if (resource == "Work") {
-        work += Number(clickAmounts.Work);
+        doWork();
     }
     if (resource == "Silicon") {
         resources.Silicon += Number(clickAmounts.Silicon);
